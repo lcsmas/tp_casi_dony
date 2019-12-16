@@ -3,7 +3,6 @@ package tp_casi_dony;
 public abstract class AbstractDictionnary implements IDictionnary{
 	protected Object[] key = new Object[0];
 	protected Object[] value = new Object[0];
-	
 	@Override
 	public Object get(Object key) {
 		return this.value[this.indexOf(key)];
