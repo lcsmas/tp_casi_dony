@@ -1,20 +1,22 @@
-package tp_casi_dony;
+package tp1;
+
+import java.util.Arrays;
 
 public abstract class AbstractDictionnary implements IDictionnary{
-	protected Object[] key = new Object[0];
-	protected Object[] value = new Object[0];
+	protected Object[] keys = new Object[0];
+	protected Object[] values = new Object[0];
 	@Override
 	public Object get(Object key) {
-		return this.value[this.indexOf(key)];
+		return this.values[this.indexOf(key)];
 	}
 	@Override
 	public boolean isEmpty() {
-		return this.value.length == 0;
+		return this.size() == 0;
 	}
 	@Override
 	public boolean containsKey(Object key) {
 		boolean res = false;
-		for (Object object : this.key) {
+		for (Object object : this.keys) {
 			if(object == key) {
 				res = true;
 				break;
@@ -24,19 +26,24 @@ public abstract class AbstractDictionnary implements IDictionnary{
 	}
 	@Override
 	public int size() {
-		return this.key.length;
+		return this.keys.length;
 	}
 	@Override
 	public Object put(Object key, Object value) {
 		int i = indexOf(key);
 		if ( i == -1) {
 			i = newIndexOf(key);
-			this.key[i] = key;
-			this.value[i] = value;
+			this.keys[i] = key;
+			this.values[i] = value;
 		} else {
-			this.value[i] = value;
+			this.values[i] = value;
 		}
 		return this;
+	}
+	
+	@Override
+	public String toString() {
+		return "AbstractDictionnary [key=" + Arrays.toString(keys) + ", value=" + Arrays.toString(values) + "]";
 	}
 	protected abstract int indexOf(Object o);
 	protected abstract int newIndexOf(Object o);

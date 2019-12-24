@@ -1,4 +1,4 @@
-package tp_casi_dony;
+package tp1;
 
 public interface IDictionnary {
 	Object get(Object key);
